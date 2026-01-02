@@ -3,6 +3,7 @@ plugins {
     id 'maven-publish'
     id 'net.neoforged.moddev' version '2.0.134'
     id 'idea'
+    id 'org.jetbrains.kotlin.jvm' version '2.2.20'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -19,6 +20,21 @@ group = mod_group_id
 
 repositories {
     // Add here additional repositories if required by some of the dependencies below.
+    maven {
+        name = "Cobblemon"
+        url = uri("https://artefacts.cobblemon.com/releases")
+    }
+    maven {
+        name = 'Kotlin for Forge'
+        url = 'https://thedarkcolour.github.io/KotlinForForge/'
+    }
+    maven {
+        name = 'Architectury'
+        url = 'https://maven.architectury.dev/'
+    }
+    flatDir {
+        dir 'libs'
+    }
 }
 
 base {
@@ -123,6 +139,14 @@ dependencies {
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
     // The group id is ignored when searching -- in this case, it is "blank"
     // implementation "blank:coolmod-${mc_version}:${coolmod_version}"
+    implementation 'thedarkcolour:kotlinforforge-neoforge:5.10.0'
+    implementation "com.cobblemon:neoforge:1.7.1+1.21.1"
+    implementation group: "ludichat.cobbreeding", name: "Cobbreeding-neoforge", version: "2.1.1"
+    implementation "dev.architectury:architectury-neoforge:13.0.8"
+    implementation "me.shedaniel.cloth:cloth-config-neoforge:15.0.140"
+
+
+
 
     // Example mod dependency using a file as dependency
     // implementation files("libs/coolmod-${mc_version}-${coolmod_version}.jar")

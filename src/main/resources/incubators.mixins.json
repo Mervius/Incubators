@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "top.yuhh.incubators.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "PokemonEggMixin",
+    "EggUtilitiesMixin",
+    "PastureBlockBlockEntityMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
