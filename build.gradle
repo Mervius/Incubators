@@ -25,12 +25,16 @@ repositories {
         url = uri("https://artefacts.cobblemon.com/releases")
     }
     maven {
-        name = 'Kotlin for Forge'
-        url = 'https://thedarkcolour.github.io/KotlinForForge/'
+        name = "Kotlin for Forge"
+        url = "https://thedarkcolour.github.io/KotlinForForge/"
     }
     maven {
-        name = 'Architectury'
-        url = 'https://maven.architectury.dev/'
+        name = "Architectury"
+        url = "https://maven.architectury.dev/"
+    }
+    maven {
+        name = "Cobbreeding"
+        url = "https://gitlab.com/ludichat/Cobbreeding"
     }
     flatDir {
         dir 'libs'
