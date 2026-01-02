@@ -1,3 +1,5 @@
+This license applies only to the files found within this package.
+
 Mozilla Public License Version 2.0
 ==================================
 
