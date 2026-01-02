@@ -36,9 +36,6 @@ repositories {
         name = "Modrinth"
         url = "https://api.modrinth.com/maven"
     }
-    flatDir {
-        dir 'libs'
-    }
 }
 
 base {
