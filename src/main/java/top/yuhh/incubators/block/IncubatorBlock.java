@@ -34,14 +34,17 @@ import top.yuhh.incubators.mpl.VoxelHelper;
 import javax.annotation.Nullable;
 
 import static com.cobblemon.mod.common.util.VectorShapeExtensionsKt.rotateShape;
+
 public class IncubatorBlock extends BaseEntityBlock {
     public static final  MapCodec<IncubatorBlock> CODEC = simpleCodec(IncubatorBlock::new);
 
     public static final BooleanProperty HAS_EGG = CustomProperties.HAS_EGG;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-
     private final VoxelShape EAST_SHAPE = VoxelHelper.buildCollider(Direction.EAST);
+    private final VoxelShape WEST_SHAPE = rotateShape(Direction.EAST, Direction.WEST, EAST_SHAPE);
+    private final VoxelShape NORTH_SHAPE = rotateShape(Direction.EAST, Direction.NORTH, EAST_SHAPE);
+    private final VoxelShape SOUTH_SHAPE = rotateShape(Direction.EAST, Direction.SOUTH, EAST_SHAPE);
 
 
     public IncubatorBlock(Properties properties) {
@@ -94,7 +97,13 @@ public class IncubatorBlock extends BaseEntityBlock {
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return rotateShape(Direction.EAST, state.getValue(FACING), EAST_SHAPE);
+        return switch (state.getValue(HorizontalDirectionalBlock.FACING)) {
+            case Direction.EAST -> EAST_SHAPE;
+            case Direction.WEST -> WEST_SHAPE;
+            case Direction.SOUTH -> SOUTH_SHAPE;
+            default -> NORTH_SHAPE;
+        };
+
     }
 
     @Override
